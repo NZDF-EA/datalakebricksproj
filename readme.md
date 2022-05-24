@@ -20,15 +20,6 @@ A private DNS zone has also been configured for the Vnet to allow for dynamic up
 
 The Azure Databricks is [configured with VNet injection enabled][DataBricksVnet].  This requires the creation of two subnets in the existing VNet which are bound to the Public and Private endpoints of the Databricks services.
 
-# Private Link
-Private Link provides access to services over the Private Endpoint network interface. Private Endpoint uses a private IP address from your virtual network. You can access various services over that private IP address:
-
-* Azure PaaS services
-* Customer-owned services that Azure hosts
-* Partner services that Azure hosts
-
-Traffic between your virtual network and the service that you're accessing travels across the Azure network backbone. As a result, you no longer access the service over a public endpoint. For more information, see [What is Azure Private Link?][PrivateLink]
-
 # Further configuration
 Once this template is deployed, the ADL will be required to be connected to the Databricks instance.  Please see the tutorial below for the instructions on how to perform this.  The key parts to pay attention to are the prerequisites - one of these is to [create a Service Principal][ServicePrincipal] which allows you to provision application access to the ADL, only giving it the rights it requires, and ensuring you do not need to provision access for all users individually.
 
