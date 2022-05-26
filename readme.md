@@ -27,11 +27,13 @@ Connect ADL to Databricks
 * [Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs][AdlToDataBricksConfig]
 
 # Deploy the bicep template
-Create a new resource group called rg-adltest in location Australia Central.  This will be used by the bicept script to deploy all resources in the diagram above.
-Download all the bicep files to a single folder and open a powershell command prompt at that location.
-Run the following command:
+1. Create a new resource group called rg-adltest in location Australia Central.  This will be used by the bicept script to deploy all resources in the diagram above.
+2. Download all the bicep files to a single folder and open a powershell command prompt at that location.
+3. Run the following command:
 
 `New-AzResourceGroupDeployment -ResourceGroupName rg-adltest -TemplateFile main.bicep`
+
+4. You will be prompted to enter a password for the Virtual Machine.  The username is hardcoded in the main.bicep as *Datauser1* and can be changed if required.
 
 <!-- Local -->
 [Design]: images/highleveldesign.jpg
