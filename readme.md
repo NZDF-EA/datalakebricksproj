@@ -26,8 +26,12 @@ Once this template is deployed, the ADL will be required to be connected to the 
 Connect ADL to Databricks
 * [Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs][AdlToDataBricksConfig]
 
-Create a new resource group called rg-adltest in location Australia Central
+# Deploy the bicep template
+Create a new resource group called rg-adltest in location Australia Central.  This will be used by the bicept script to deploy all resources in the diagram above.
+Download all the bicep files to a single folder and open a powershell command prompt at that location.
+Run the following command:
 
+`New-AzResourceGroupDeployment -ResourceGroupName rg-adltest -TemplateFile main.bicep`
 
 <!-- Local -->
 [Design]: images/highleveldesign.jpg

@@ -8,6 +8,16 @@ param subnet3Name string
 param subnet3Prefix string
 param location string = resourceGroup().location
 
+resource nsg2 'Microsoft.Network/networkSecurityGroups@2021-08-01'  = {
+  name: 'nsgSubnet2'
+  location: location
+}
+
+resource nsg3 'Microsoft.Network/networkSecurityGroups@2021-08-01'  = {
+  name: 'nsgSubnet3'
+  location: location
+}
+
 resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
   name: vnetName
   location: location
@@ -22,10 +32,6 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
         name: subnet1Name
         properties: {
           addressPrefix: subnet1Prefix
-          networkSecurityGroup: {
-            location: location
-            properties: {}
-          }
         }
       }
       {
@@ -33,9 +39,17 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
         properties: {
           addressPrefix: subnet2Prefix
           networkSecurityGroup: {
-            location: location
-            properties: {}
-          }
+            id: nsg2.id
+          }          
+          delegations: [
+            {
+              name: 'Microsoft.Databricks/workspaces'
+              properties: {
+                serviceName: 'Microsoft.Databricks/workspaces'
+              }
+              type: 'string'
+            }
+          ]
         }
       }
       {
@@ -43,9 +57,17 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
         properties: {
           addressPrefix: subnet3Prefix
           networkSecurityGroup: {
-            location: location
-            properties: {}
+            id: nsg3.id
           }
+          delegations: [
+            {
+              name: 'Microsoft.Databricks/workspaces'
+              properties: {
+                serviceName: 'Microsoft.Databricks/workspaces'
+              }
+              type: 'string'
+            }
+          ]
         }
       }      
     ]
