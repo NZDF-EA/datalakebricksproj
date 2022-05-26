@@ -26,6 +26,9 @@ Once this template is deployed, the ADL will be required to be connected to the 
 Connect ADL to Databricks
 * [Tutorial: Azure Data Lake Storage Gen2, Azure Databricks & Spark | Microsoft Docs][AdlToDataBricksConfig]
 
+Create a new resource group called rg-adltest in location Australia Central
+
+
 <!-- Local -->
 [Design]: images/highleveldesign.jpg
 
