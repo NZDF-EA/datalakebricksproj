@@ -24,7 +24,7 @@ var adminUsername = 'Datauser1'
 var dbworkspacename = 'DataLakePOC'
 
 // Deploying VNet
-module vnet './network.bicep' = {
+module vnet './resources/network.bicep' = {
   name: 'vnetDeployment'
   params: {
     vnetName: vnetname
@@ -40,7 +40,7 @@ module vnet './network.bicep' = {
 }
 
 // Deploying storage account from storage bicep
-module stg './storage.bicep' = {
+module stg './resources/storage.bicep' = {
   name: 'storageDeployment'
   params: {
     location: location
@@ -49,7 +49,7 @@ module stg './storage.bicep' = {
 }
 
 // Deploying private endpoint from privateep bicep
-module pvtep './privateep.bicep' = {
+module pvtep './resources/privateep.bicep' = {
   name: 'privateEndpointDeployment'
   params: {
     location: location
@@ -59,7 +59,7 @@ module pvtep './privateep.bicep' = {
 }
 
 // Deploying virtual machine from vm bicep
-module vm './vm.bicep' = {
+module vm './resources/vm.bicep' = {
   name: 'vmDeployment'
   params: {
     location: location
@@ -74,7 +74,7 @@ module vm './vm.bicep' = {
 }
 
 // Deploying databricks from db bicep
-module databrick './databrick.bicep' = {
+module databrick './resources/databrick.bicep' = {
   name: 'databrickDeployment'
   params: {
     location: location
