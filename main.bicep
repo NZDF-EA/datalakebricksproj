@@ -22,6 +22,7 @@ var vmSize = 'Standard_D2s_v3'
 var OSVersion = '2019-datacenter-gensecond'
 var adminUsername = 'Datauser1'
 var dbworkspacename = 'DataLakePOC'
+var sqldbName = 'DataLakePOCDb'
 
 // Deploying VNet
 module vnet './resources/network.bicep' = {
@@ -49,12 +50,14 @@ module stg './resources/storage.bicep' = {
 }
 
 // Deploying private endpoint from privateep bicep
-module pvtep './resources/privateep.bicep' = {
-  name: 'privateEndpointDeployment'
+module pvtepstor './resources/privateep.bicep' = {
+  name: 'privateEndpointDeploymentStor'
   params: {
     location: location
     subnetref: '${vnet.outputs.vnetID}/subnets/${subnet1Name}'
-    storageref: stg.outputs.storageID
+    resourceref: stg.outputs.storageID
+    gpids: 'blob'
+    epname: 'StorageEP1'
   }
 }
 
@@ -82,5 +85,32 @@ module databrick './resources/databrick.bicep' = {
     publicSubnetName: subnet2Name
     privateSubnetName: subnet3Name
     vnetid: vnet.outputs.vnetID
+  }
+}
+
+// Deploying sqldb from sqldb bicep
+module sqldb './resources/sqldb.bicep' = {
+  name: 'sqlDeployment'
+  params: {
+    location: location
+    // publicSubnetName: vnet.outputs.subnetId1
+    // privateSubnetName: subnet3Name
+    // vnetid: vnet.outputs.vnetID
+    administratorLoginPassword: adminPassword
+    administratorLogin: adminUsername
+    sqlDBName: sqldbName
+    sqlServerName: uniqueString('sql', resourceGroup().id)
+  }
+}
+
+// Deploying private endpoint from privateep bicep
+module pvtepsql './resources/privateep.bicep' = {
+  name: 'privateEndpointDeploymentSQL'
+  params: {
+    location: location
+    subnetref: '${vnet.outputs.vnetID}/subnets/${subnet1Name}'
+    resourceref: sqldb.outputs.sqlserverID
+    gpids: 'sqlServer'
+    epname: 'SQLEP1'
   }
 }

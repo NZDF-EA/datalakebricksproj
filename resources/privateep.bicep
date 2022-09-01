@@ -1,10 +1,12 @@
 
 param location string = resourceGroup().location
 param subnetref string
-param storageref string
+param resourceref string
+param epname string
+param gpids string
 
 resource privateEndpoint 'Microsoft.Network/privateEndpoints@2020-06-01' = {
-  name: 'PrivateEndpoint1'
+  name: epname
   location: location
   properties: {
     subnet: {
@@ -13,12 +15,12 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2020-06-01' = {
     privateLinkServiceConnections: [
       {
         properties: {
-          privateLinkServiceId: storageref
+          privateLinkServiceId: resourceref
           groupIds: [
-            'blob'
+            gpids
           ]
         }
-        name: 'PrivateEndpoint1'
+        name: epname
       }
     ]
   }
