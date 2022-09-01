@@ -7,7 +7,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2021-09-01' = {
   name: storageAccountName
   location: location
   sku: {
-    name: 'Standard_RAGRS'
+    name: 'Standard_ZRS'
   }
   kind: 'StorageV2'
   properties: {
