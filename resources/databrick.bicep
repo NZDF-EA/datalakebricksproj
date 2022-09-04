@@ -5,7 +5,7 @@ param privateSubnetName string
 param vnetid string
 var managedResourceGroupName = 'databricks-rg-${workspaceName}-${uniqueString(workspaceName, resourceGroup().id)}'
 
-resource symbolicname 'Microsoft.Databricks/workspaces@2021-04-01-preview' = {
+resource databricksworkspace 'Microsoft.Databricks/workspaces@2021-04-01-preview' = {
   name: workspaceName
   location: location
   sku: {
