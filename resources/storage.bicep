@@ -2,12 +2,13 @@
 
 param storageAccountName string
 param location string = resourceGroup().location
+//param location string = 'australia'
 
 resource stg 'Microsoft.Storage/storageAccounts@2021-09-01' = {
   name: storageAccountName
   location: location
   sku: {
-    name: 'Standard_ZRS'
+    name: 'Standard_LRS'
   }
   kind: 'StorageV2'
   properties: {

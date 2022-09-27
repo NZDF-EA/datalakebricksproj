@@ -1,7 +1,7 @@
 // =========== main.bicep ===========
 
-@description('Password for the Virtual Machine.')
-@minLength(12)
+// @description('Password for the Virtual Machine.')
+// @minLength(12)
 @secure()
 param adminPassword string
 
@@ -19,10 +19,15 @@ var storageAccountName = 'adlstorage1${uniqueString(resourceGroup().id)}'
 var nicName = 'adlvmnic'
 var vmName = 'simple-vm'
 var vmSize = 'Standard_D2s_v3'
-var OSVersion = '2019-datacenter-gensecond'
+var OSVersion = 'winserver-2019'
 var adminUsername = 'Datauser1'
 var dbworkspacename = 'DataLakePOC'
 var sqldbName = 'DataLakePOCDb'
+
+// resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
+//   name: 'keyvaultdemoea'
+//   scope: resourceGroup('99f572f2-049d-44df-aaba-56c285c47285', 'rg-eas-demo' )
+// }
 
 // Deploying VNet
 module vnet './resources/network.bicep' = {

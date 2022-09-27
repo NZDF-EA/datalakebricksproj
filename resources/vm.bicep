@@ -41,8 +41,8 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-03-01' = {
     }
     storageProfile: {
       imageReference: {
-        publisher: 'MicrosoftWindowsServer'
-        offer: 'WindowsServer'
+        publisher: 'Microsoft-DSVM'
+        offer: 'DSVM-Win-2019'
         sku: OSVersion
         version: 'latest'
       }
