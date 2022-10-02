@@ -12,10 +12,11 @@ jobs:
         with:
             keyvault: "keyvaultdemoea"
             secrets: 'adminPassword'
-        id: MY_KV_ACTION
+        id: getSecret
       - name: toazure
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./main.bicep
+          adminUsername: getSecret
