@@ -1,5 +1,6 @@
 
 param adminUsername string
+@secure()
 param adminPassword string
 param OSVersion string
 param vmSize string
