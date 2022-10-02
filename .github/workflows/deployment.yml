@@ -12,7 +12,7 @@ jobs:
         with:
             keyvault: "keyvaultdemoea"
             secrets: 'adminPassword'
-        id: mykvaction
+        id: MY_KV_ACTION
       - name: toazure
         uses: azure/arm-deploy@v1
         with:
