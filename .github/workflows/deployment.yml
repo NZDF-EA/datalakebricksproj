@@ -18,6 +18,6 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          adminUsername: ${{ steps.getSecret.outputs.adminPassword }}
+          adminUsername: ${{ steps.getSecret }} 
           template: ./main.bicep
 
