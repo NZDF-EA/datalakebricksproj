@@ -1,0 +1,14 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "adminPassword": {
+        "reference": {
+          "keyVault": {
+            "id": "/subscriptions/99f572f2-049d-44df-aaba-56c285c47285/resourceGroups/rg-eas-demo/providers/Microsoft.KeyVault/vaults/keyvaultdemoea"
+          },
+          "secretName": "adminPassword"
+        }
+      }
+    }
+  }
