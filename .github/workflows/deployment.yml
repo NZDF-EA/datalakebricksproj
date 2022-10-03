@@ -15,6 +15,6 @@ jobs:
           resourceGroupName: ${{ secrets.AZURE_RG }}  
           adminPassword: adminPassword
           template: ./main.bicep
-          parameters: './pass.json'
+          parameters: ./pass.json
 
 
