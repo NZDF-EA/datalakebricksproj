@@ -1,7 +1,5 @@
 on: [push]
 name: Bicep deploy
-env:
-          adminPassword: ${{ secrets[VM_PASSWORD_KV] }}
 jobs:
     build-deploy:
       runs-on: ubuntu-latest
@@ -17,6 +15,6 @@ jobs:
           resourceGroupName: ${{ secrets.AZURE_RG }}  
           adminPassword: adminPassword
           template: ./main.bicep
-
+          parameters: './pass.json'
 
 
