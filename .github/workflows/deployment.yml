@@ -14,6 +14,6 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}       
           template: ./main.bicep
-          parameters: ./pass.json
+          parameters: ${{ secrets.VM_PASSWORD_KV }}
 
 
