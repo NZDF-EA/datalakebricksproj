@@ -8,11 +8,6 @@ jobs:
       - uses: azure/login@v1
         with: 
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - uses: Azure/get-keyvault-secrets@v1
-        with:
-            keyvault: "keyvaultdemoea"
-            secrets: 'adminPassword'
-        id: getSecret
       - name: toazure
         uses: azure/arm-deploy@v1
         with:
